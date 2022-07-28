@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HotelReservation.dbo.CustomerDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ReservStart" />
+            <PropertyRef Name="ReservEnd" />
+            <PropertyRef Name="TypeOfRoom" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ReservStart" Type="datetime" Nullable="false" />
+          <Property Name="ReservEnd" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TypeOfRoom" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomerDetail_TypeOfRoom">
+          <End Role="TypeOfRoom" Type="Self.TypeOfRoom" Multiplicity="1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfRoom">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="TypeOfRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelReservationModelStoreContainer">
+          <EntitySet Name="TypeOfRoom" EntityType="Self.TypeOfRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerDetail].[id] AS [id], 
+    [CustomerDetail].[CustomerName] AS [CustomerName], 
+    [CustomerDetail].[ReservStart] AS [ReservStart], 
+    [CustomerDetail].[ReservEnd] AS [ReservEnd], 
+    [CustomerDetail].[Price] AS [Price], 
+    [CustomerDetail].[TypeOfRoom] AS [TypeOfRoom]
+    FROM [dbo].[CustomerDetail] AS [CustomerDetail]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="Self.FK_CustomerDetail_TypeOfRoom">
+            <End Role="TypeOfRoom" EntitySet="TypeOfRoom" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TypeOfRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="TypeOfRoom" ToRole="CustomerDetail" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ReservStart" />
+            <PropertyRef Name="ReservEnd" />
+            <PropertyRef Name="TypeOfRoom" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReservStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReservEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TypeOfRoom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeOfRoom1" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="CustomerDetail" ToRole="TypeOfRoom" />
+        </EntityType>
+        <Association Name="FK_CustomerDetail_TypeOfRoom">
+          <End Role="TypeOfRoom" Type="Self.TypeOfRoom" Multiplicity="1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfRoom">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="TypeOfRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelReservationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TypeOfRooms" EntityType="Self.TypeOfRoom" />
+          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+          <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="Self.FK_CustomerDetail_TypeOfRoom">
+            <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelReservationModelStoreContainer" CdmEntityContainer="HotelReservationEntities">
+          <EntitySetMapping Name="TypeOfRooms">
+            <EntityTypeMapping TypeName="HotelReservationModel.TypeOfRoom">
+              <MappingFragment StoreEntitySet="TypeOfRoom">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetails">
+            <EntityTypeMapping TypeName="HotelReservationModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ReservStart" ColumnName="ReservStart" />
+                <ScalarProperty Name="ReservEnd" ColumnName="ReservEnd" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

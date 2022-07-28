@@ -1,0 +1,11 @@
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\HotelReservationForm.exe.config
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\HotelReservationForm.exe
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\HotelReservationForm.pdb
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.AssemblyReference.cache
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.SuggestedBindingRedirects.cache
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Form1.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Properties.Resources.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.GenerateResource.cache
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.CoreCompileInputs.cache
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.exe
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.pdb
