@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
+    
     public partial class Form1 : Form
     {
+        private readonly HotelReservationEntities _hotelReservationEntities;
         public Form1()
         {
             InitializeComponent();
+            _hotelReservationEntities = new HotelReservationEntities();
         }
 
         private void btnSubmitClick(object sender, EventArgs e)
@@ -58,6 +61,13 @@ namespace HotelReservationForm
                 throw;
             }
         }
-    
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var room = _hotelReservationEntities.TypeOfRooms.ToList();
+            typeRoom.DisplayMember = "Name";
+            typeRoom.ValueMember = "Id";
+            typeRoom.DataSource = room;
+        }
     }
 }

@@ -121,12 +121,6 @@
             // typeRoom
             // 
             this.typeRoom.FormattingEnabled = true;
-            this.typeRoom.Items.AddRange(new object[] {
-            "Rich people room with diamonds",
-            "Not-so-rich-but-kinda room with almost rich people stuff",
-            "Cool room nothing fancy but comfortable",
-            "Less cool room",
-            "Please hide me from my haunted doll"});
             this.typeRoom.Location = new System.Drawing.Point(30, 326);
             this.typeRoom.Name = "typeRoom";
             this.typeRoom.Size = new System.Drawing.Size(282, 21);
@@ -205,6 +199,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
