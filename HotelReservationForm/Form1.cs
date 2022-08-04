@@ -64,6 +64,7 @@ namespace HotelReservationForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var kind = _hotelReservationEntities.TypeOfRooms;
             var room = _hotelReservationEntities.TypeOfRooms.ToList();
             typeRoom.DisplayMember = "Name";
             typeRoom.ValueMember = "Id";

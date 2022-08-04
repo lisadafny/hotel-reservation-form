@@ -12,20 +12,21 @@ namespace HotelReservationForm
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class HotelReservationEntities : DbContext
     {
         public HotelReservationEntities()
-            : base("name=HotelReservationEntities")
+            : base("HotelReservationEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<TypeOfRoom> TypeOfRooms { get; set; }
         public virtual DbSet<CustomerDetail> CustomerDetails { get; set; }
     }
 }
+
