@@ -20,39 +20,47 @@ namespace HotelReservationForm
             _hotelReservationEntities = new HotelReservationEntities();
         }
 
-        private void btnSubmitClick(object sender, EventArgs e)
+        bool warningBool = false;
+        string warningFieldMsg = string.Empty;
+        string warningDateMsg = string.Empty;
+        string messageError = string.Empty;
+        string messageSucess = string.Empty;
+
+        private void BtnSubmitClick(object sender, EventArgs e)
         {
+
+            string customerName = tbCustomer.Text;
+            string room = typeRoom.Text;
+            DateTime dateIn = dtInitial.Value.Date;
+            DateTime dateOut = dtFinal.Value.Date;
+
+
             try
             {
-                string customerName = tbCustomer.Text;
-                string room = typeRoom.Text;
-                DateTime dateIn = dtInitial.Value.Date;
-                DateTime dateOut = dtFinal.Value.Date;
-                bool warning = false;
-                string warningFieldMsg = string.Empty;
-                string warningDateMsg = string.Empty;
+                warningFieldMsg = MessageMakerClass.EmptyValidation(customerName, room);
+                warningDateMsg = MessageMakerClass.DateValidation(dateIn, dateOut);
+                warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningDateMsg);
+                messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningDateMsg);
+                messageSucess = MessageMakerClass.SucessMessage(customerName, room, dateIn, dateOut);
 
-                if (string.IsNullOrEmpty(customerName) || string.IsNullOrEmpty(room))
+                if (warningBool)
                 {
-                    warning = true;
-                    warningFieldMsg = "Please don't leave any field empty!";
+                   MessageBox.Show(messageError, "WARNING");
                 }
-                if (dateOut < dateIn)
+                else
                 {
-                    warning = true;
-                    warningDateMsg = "Your final date must be higher than your initial date";
-                }
-                if (warning)
-                {
-                    MessageBox.Show($"{warningFieldMsg}\n\r" +
-                        $"{warningDateMsg}", "WARNING");
-                }
-                if (!warning)
-                {
-                    MessageBox.Show($"Thank you {customerName}!\n\r" +
-                    $"Your reservation was requested\n\r" +
-                    $"You choose the {room}\n\r" +
-                    $"at {dateIn} until {dateOut}!", "SUCCESS");
+                    var reservationRecord = new CustomerDetail
+                    {
+                        CustomerName = customerName,
+                        ReservStart = dateIn,
+                        ReservEnd = dateOut,
+                        TypeOfRoom = (int)typeRoom.SelectedValue
+                    };
+
+                    _hotelReservationEntities.CustomerDetails.Add(reservationRecord);
+                    _hotelReservationEntities.SaveChanges();
+
+                    MessageBox.Show(messageSucess, "SUCCESS");
                 }
             }
             catch (Exception ex)
@@ -64,7 +72,6 @@ namespace HotelReservationForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var kind = _hotelReservationEntities.TypeOfRooms;
             var room = _hotelReservationEntities.TypeOfRooms.ToList();
             typeRoom.DisplayMember = "Name";
             typeRoom.ValueMember = "Id";

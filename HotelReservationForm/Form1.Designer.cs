@@ -167,7 +167,7 @@
             this.btnSubmit.TabIndex = 12;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmitClick);
+            this.btnSubmit.Click += new System.EventHandler(this.BtnSubmitClick);
             // 
             // pictureBox1
             // 

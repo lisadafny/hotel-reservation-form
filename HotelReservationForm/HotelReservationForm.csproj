@@ -79,6 +79,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HotelReservationDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MessageMakerClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeOfRoom.cs">
