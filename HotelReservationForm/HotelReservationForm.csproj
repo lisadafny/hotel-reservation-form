@@ -120,22 +120,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="HotelReservationDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HotelReservationDB.Context.cs</LastGenOutput>
       <DependentUpon>HotelReservationDB.edmx</DependentUpon>
+      <LastGenOutput>HotelReservationDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="HotelReservationDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HotelReservationDB.edmx</DependentUpon>
       <LastGenOutput>HotelReservationDB.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Untitled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

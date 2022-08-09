@@ -1,20 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HotelReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="TypeOfRoom">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="TypeOfRoom" ToRole="CustomerDetail" />
-  </EntityType>
   <EntityType Name="CustomerDetail">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="CustomerName" />
-      <PropertyRef Name="ReservStart" />
-      <PropertyRef Name="ReservEnd" />
-      <PropertyRef Name="TypeOfRoom" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -23,6 +11,14 @@
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="TypeOfRoom" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TypeOfRoom1" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="CustomerDetail" ToRole="TypeOfRoom" />
+  </EntityType>
+  <EntityType Name="TypeOfRoom">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="TypeOfRoom" ToRole="CustomerDetail" />
   </EntityType>
   <Association Name="FK_CustomerDetail_TypeOfRoom">
     <End Role="TypeOfRoom" Type="Self.TypeOfRoom" Multiplicity="1" />
@@ -37,8 +33,8 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="HotelReservationEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="TypeOfRooms" EntityType="Self.TypeOfRoom" />
     <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+    <EntitySet Name="TypeOfRooms" EntityType="Self.TypeOfRoom" />
     <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="Self.FK_CustomerDetail_TypeOfRoom">
       <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
       <End Role="CustomerDetail" EntitySet="CustomerDetails" />
