@@ -11,10 +11,10 @@ using System.Windows.Forms;
 namespace HotelReservationForm
 {
     
-    public partial class Form1 : Form
+    public partial class CustomerReservation : Form
     {
         private readonly HotelReservationEntities _hotelReservationEntities;
-        public Form1()
+        public CustomerReservation()
         {
             InitializeComponent();
             _hotelReservationEntities = new HotelReservationEntities();

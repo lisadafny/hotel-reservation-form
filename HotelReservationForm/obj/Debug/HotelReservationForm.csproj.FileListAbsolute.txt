@@ -3,7 +3,6 @@ D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\HotelR
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\HotelReservationForm.pdb
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.AssemblyReference.cache
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.SuggestedBindingRedirects.cache
-D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Form1.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Properties.Resources.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.GenerateResource.cache
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.CoreCompileInputs.cache
@@ -14,3 +13,6 @@ D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\Entity
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\EntityFramework.xml
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\bin\Debug\EntityFramework.SqlServer.xml
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.csproj.CopyComplete
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.CustomerReservation.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Navigation.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.ManageReservations.resources
