@@ -4,20 +4,21 @@
     <EntitySetMapping Name="CustomerDetails">
       <EntityTypeMapping TypeName="HotelReservationModel.CustomerDetail">
         <MappingFragment StoreEntitySet="CustomerDetail">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-          <ScalarProperty Name="ReservStart" ColumnName="ReservStart" />
-          <ScalarProperty Name="ReservEnd" ColumnName="ReservEnd" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ReservEnd" ColumnName="ReservEnd" />
+          <ScalarProperty Name="ReservStart" ColumnName="ReservStart" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeOfRooms">
       <EntityTypeMapping TypeName="HotelReservationModel.TypeOfRoom">
         <MappingFragment StoreEntitySet="TypeOfRoom">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

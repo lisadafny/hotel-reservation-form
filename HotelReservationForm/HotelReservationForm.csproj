@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditRoom.Designer.cs">
+      <DependentUpon>AddEditRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerDetail.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="TypeOfRoom.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddEditRoom.resx">
+      <DependentUpon>AddEditRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerReservation.resx">
       <DependentUpon>CustomerReservation.cs</DependentUpon>
     </EmbeddedResource>

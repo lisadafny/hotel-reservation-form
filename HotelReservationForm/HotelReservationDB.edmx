@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HotelReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HotelReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CustomerDetail">
           <Key>
             <PropertyRef Name="id" />
@@ -22,6 +22,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_CustomerDetail_TypeOfRoom">
           <End Role="TypeOfRoom" Type="Self.TypeOfRoom" Multiplicity="1" />
@@ -43,34 +44,42 @@
             <End Role="CustomerDetail" EntitySet="CustomerDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HotelReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HotelReservationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerDetails" EntityType="HotelReservationModel.CustomerDetail" />
+          <EntitySet Name="TypeOfRooms" EntityType="HotelReservationModel.TypeOfRoom" />
+          <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="HotelReservationModel.FK_CustomerDetail_TypeOfRoom">
+            <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetails" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CustomerDetail">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ReservStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ReservEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TypeOfRoom" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TypeOfRoom1" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="CustomerDetail" ToRole="TypeOfRoom" />
+          <NavigationProperty Name="TypeOfRoom1" Relationship="HotelReservationModel.FK_CustomerDetail_TypeOfRoom" FromRole="CustomerDetail" ToRole="TypeOfRoom" />
         </EntityType>
         <EntityType Name="TypeOfRoom">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_TypeOfRoom" FromRole="TypeOfRoom" ToRole="CustomerDetail" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CustomerDetails" Relationship="HotelReservationModel.FK_CustomerDetail_TypeOfRoom" FromRole="TypeOfRoom" ToRole="CustomerDetail" />
         </EntityType>
         <Association Name="FK_CustomerDetail_TypeOfRoom">
-          <End Role="TypeOfRoom" Type="Self.TypeOfRoom" Multiplicity="1" />
-          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <End Type="HotelReservationModel.TypeOfRoom" Role="TypeOfRoom" Multiplicity="1" />
+          <End Type="HotelReservationModel.CustomerDetail" Role="CustomerDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeOfRoom">
               <PropertyRef Name="id" />
@@ -80,14 +89,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HotelReservationEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
-          <EntitySet Name="TypeOfRooms" EntityType="Self.TypeOfRoom" />
-          <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="Self.FK_CustomerDetail_TypeOfRoom">
-            <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
-            <End Role="CustomerDetail" EntitySet="CustomerDetails" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -97,20 +98,21 @@
           <EntitySetMapping Name="CustomerDetails">
             <EntityTypeMapping TypeName="HotelReservationModel.CustomerDetail">
               <MappingFragment StoreEntitySet="CustomerDetail">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="ReservStart" ColumnName="ReservStart" />
-                <ScalarProperty Name="ReservEnd" ColumnName="ReservEnd" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ReservEnd" ColumnName="ReservEnd" />
+                <ScalarProperty Name="ReservStart" ColumnName="ReservStart" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeOfRooms">
             <EntityTypeMapping TypeName="HotelReservationModel.TypeOfRoom">
               <MappingFragment StoreEntitySet="TypeOfRoom">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
