@@ -33,6 +33,7 @@
             this.btnAddRoom = new System.Windows.Forms.Button();
             this.btnEditRoom = new System.Windows.Forms.Button();
             this.btnDeleteRoom = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvHotelReservations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.btnAddRoom.TabIndex = 2;
             this.btnAddRoom.Text = "ADD NEW ROOM";
             this.btnAddRoom.UseVisualStyleBackColor = true;
-            this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoomClick);
+            this.btnAddRoom.Click += new System.EventHandler(this.BtnAddRoomClick);
             // 
             // btnEditRoom
             // 
@@ -72,7 +73,7 @@
             this.btnEditRoom.TabIndex = 3;
             this.btnEditRoom.Text = "EDIT ROOM";
             this.btnEditRoom.UseVisualStyleBackColor = true;
-            this.btnEditRoom.Click += new System.EventHandler(this.btnEditRoomClick);
+            this.btnEditRoom.Click += new System.EventHandler(this.BtnEditRoomClick);
             // 
             // btnDeleteRoom
             // 
@@ -82,13 +83,24 @@
             this.btnDeleteRoom.TabIndex = 4;
             this.btnDeleteRoom.Text = "DELETE ROOM";
             this.btnDeleteRoom.UseVisualStyleBackColor = true;
-            this.btnDeleteRoom.Click += new System.EventHandler(this.btnDeleteRoomClick);
+            this.btnDeleteRoom.Click += new System.EventHandler(this.BtnDeleteRoomClick);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.Location = new System.Drawing.Point(12, 366);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(101, 24);
+            this.refreshBtn.TabIndex = 5;
+            this.refreshBtn.Text = "REFRESH";
+            this.refreshBtn.UseVisualStyleBackColor = true;
+            this.refreshBtn.Click += new System.EventHandler(this.RefreshBtnClick);
             // 
             // ManageReservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.refreshBtn);
             this.Controls.Add(this.btnDeleteRoom);
             this.Controls.Add(this.btnEditRoom);
             this.Controls.Add(this.btnAddRoom);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Button btnAddRoom;
         private System.Windows.Forms.Button btnEditRoom;
         private System.Windows.Forms.Button btnDeleteRoom;
+        private System.Windows.Forms.Button refreshBtn;
     }
 }

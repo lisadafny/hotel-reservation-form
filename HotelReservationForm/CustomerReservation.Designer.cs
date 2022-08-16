@@ -199,7 +199,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CustomerReservation";
             this.Text = "Make your reservation today!";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.CustomerReservationLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

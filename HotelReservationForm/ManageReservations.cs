@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace HotelReservationForm
 {
     public partial class ManageReservations : Form
-    {
+    {   
         private readonly HotelReservationEntities _hotelReservationEntities;
         public ManageReservations()
         {
@@ -19,40 +19,96 @@ namespace HotelReservationForm
             _hotelReservationEntities = new HotelReservationEntities();
         }
 
-        private void ManageReservationsOnLoad(object sender, EventArgs e)
+        public void PopulateGrid()
         {
             var rooms = _hotelReservationEntities.TypeOfRooms
-                .Select(x => new { id = x.id, Name = x.name, Price = x.price})
-                .ToList();
+            .Select(x => new { id = x.id, Name = x.name, Price = x.price })
+            .ToList();
             gvHotelReservations.DataSource = rooms;
             gvHotelReservations.Columns[0].Visible = false;
             gvHotelReservations.Columns[1].HeaderText = "NAME OF ROOM";
             gvHotelReservations.Columns[2].HeaderText = "DAILY COST";
         }
 
-        private void btnAddRoomClick(object sender, EventArgs e)
+        private void ManageReservationsOnLoad(object sender, EventArgs e)
         {
-            var addRoom = new AddEditRoom();
-            addRoom.MdiParent = this.MdiParent;
-            addRoom.Show();
+            PopulateGrid();
         }
 
-        private void btnEditRoomClick(object sender, EventArgs e)
+        private void RefreshBtnClick(object sender, EventArgs e)
         {
-            var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
-            var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
-            var editRoom = new AddEditRoom(selectedRoom);
-            editRoom.MdiParent = this.MdiParent;
-            editRoom.Show();
+            PopulateGrid();
         }
 
-        private void btnDeleteRoomClick(object sender, EventArgs e)
+        private void BtnAddRoomClick(object sender, EventArgs e)
         {
-            var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
-            var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
-            _hotelReservationEntities.TypeOfRooms.Remove(selectedRoom);
-            _hotelReservationEntities.SaveChanges();
-            gvHotelReservations.Refresh();
+            try
+            {
+                var addRoom = new AddEditRoom();
+                addRoom.MdiParent = this.MdiParent;
+                addRoom.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnEditRoomClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!gvHotelReservations.SelectedRows.Count.Equals(0))
+                {
+                    var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
+                    var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
+                    var editRoom = new AddEditRoom(selectedRoom);
+                    editRoom.MdiParent = this.MdiParent;
+                    editRoom.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Select a row!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnDeleteRoomClick(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!gvHotelReservations.SelectedRows.Count.Equals(0))
+                {
+                    DialogResult result = MessageBox.Show("Do you really want to delete this room?",
+                    "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
+                        var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
+                        _hotelReservationEntities.TypeOfRooms.Remove(selectedRoom);
+                        _hotelReservationEntities.SaveChanges();
+                        gvHotelReservations.Refresh();
+                        MessageBox.Show($"Removed Room ID {id} with success!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Operation cancelled");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select a row!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

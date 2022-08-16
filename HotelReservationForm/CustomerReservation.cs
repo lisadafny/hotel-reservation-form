@@ -20,12 +20,6 @@ namespace HotelReservationForm
             _hotelReservationEntities = new HotelReservationEntities();
         }
 
-        bool warningBool = false;
-        string warningFieldMsg = string.Empty;
-        string warningDateMsg = string.Empty;
-        string messageError = string.Empty;
-        string messageSucess = string.Empty;
-
         private void BtnSubmitClick(object sender, EventArgs e)
         {
 
@@ -37,15 +31,16 @@ namespace HotelReservationForm
 
             try
             {
-                warningFieldMsg = MessageMakerClass.EmptyValidation(customerName, room);
-                warningDateMsg = MessageMakerClass.DateValidation(dateIn, dateOut);
-                warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningDateMsg);
-                messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningDateMsg);
-                messageSucess = MessageMakerClass.SucessMessage(customerName, room, dateIn, dateOut);
+                string warningFieldMsg = MessageMakerClass.EmptyValidation(customerName, room);
+                string warningDateMsg = MessageMakerClass.DateValidation(dateIn, dateOut);
+                bool warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningDateMsg);
+                string messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningDateMsg);
+                string messageSucess = MessageMakerClass.SuccessReservationMessage(customerName, room, dateIn, dateOut);
+                string title = MessageMakerClass.TitleMaker(warningBool);
 
                 if (warningBool)
                 {
-                   MessageBox.Show(messageError, "WARNING");
+                   MessageBox.Show(messageError, title);
                 }
                 else
                 {
@@ -60,7 +55,8 @@ namespace HotelReservationForm
                     _hotelReservationEntities.CustomerDetails.Add(reservationRecord);
                     _hotelReservationEntities.SaveChanges();
 
-                    MessageBox.Show(messageSucess, "SUCCESS");
+                    MessageBox.Show(messageSucess, title);
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -70,7 +66,7 @@ namespace HotelReservationForm
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void CustomerReservationLoad(object sender, EventArgs e)
         {
             var room = _hotelReservationEntities.TypeOfRooms.ToList();
             typeRoom.DisplayMember = "Name";

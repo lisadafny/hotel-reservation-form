@@ -13,7 +13,7 @@ namespace HotelReservationForm
     public partial class AddEditRoom : Form
     {
         private readonly HotelReservationEntities _hotelReservationEntities;
-        private bool _isEditRoom = false;
+        private readonly bool _isEditRoom = false;
         public AddEditRoom()
         {
             InitializeComponent();
@@ -36,31 +36,52 @@ namespace HotelReservationForm
             idRoomLbl.Text = idRoom;
             tbRoomName.Text = room.name;
             tbPriceRoom.Text = room.price.ToString();
-
         }
 
         private void saveChangesClick(object sender, EventArgs e)
         {
             try
             {
-                if (_isEditRoom)
-                {
-                    var id = int.Parse(idRoomLbl.Text);
-                    var room = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
-                    room.name = tbRoomName.Text;
-                    room.price = decimal.Parse(tbPriceRoom.Text);
-                    _hotelReservationEntities.SaveChanges();
+                string warningFieldMsg = MessageMakerClass.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
+                string warningPriceMsg = MessageMakerClass.PriceValidation(tbPriceRoom.Text);
+                string successMsg = MessageMakerClass.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
+                bool warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningPriceMsg);
+                string messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningPriceMsg);
+                string title = MessageMakerClass.TitleMaker(warningBool);
 
+                if (!warningBool)
+                {
+                    if (_isEditRoom)
+                    {
+                        var id = int.Parse(idRoomLbl.Text);
+                        var room = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
+                        room.name = tbRoomName.Text;
+                        room.price = decimal.Parse(tbPriceRoom.Text);
+
+                        _hotelReservationEntities.SaveChanges();
+
+                        MessageBox.Show(successMsg, title);
+                        Close();
+                    }
+                    else
+                    {
+                        var newRoom = new TypeOfRoom
+                        {
+                            name = tbRoomName.Text,
+                            price = decimal.Parse(tbPriceRoom.Text)
+                        };
+
+                        _hotelReservationEntities.TypeOfRooms.Add(newRoom);
+                        _hotelReservationEntities.SaveChanges();
+
+                        MessageBox.Show(successMsg, title);
+                        Close();
+
+                    }
                 }
                 else
                 {
-                    var newRoom = new TypeOfRoom
-                    {
-                        name = tbRoomName.Text,
-                        price = decimal.Parse(tbPriceRoom.Text)
-                    };
-                    _hotelReservationEntities.TypeOfRooms.Add(newRoom);
-                    _hotelReservationEntities.SaveChanges();
+                    MessageBox.Show(messageError, title);
                 }
             }
             catch (Exception ex)
@@ -69,9 +90,10 @@ namespace HotelReservationForm
             }
         }
 
+
         private void cancelChangesClick(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
