@@ -42,12 +42,12 @@ namespace HotelReservationForm
         {
             try
             {
-                string warningFieldMsg = MessageMakerClass.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
-                string warningPriceMsg = MessageMakerClass.PriceValidation(tbPriceRoom.Text);
-                string successMsg = MessageMakerClass.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
-                bool warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningPriceMsg);
-                string messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningPriceMsg);
-                string title = MessageMakerClass.TitleMaker(warningBool);
+                string warningFieldMsg = MessageMaker.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
+                string warningPriceMsg = MessageMaker.PriceValidation(tbPriceRoom.Text);
+                string successMsg = MessageMaker.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
+                bool warningBool = MessageMaker.HasWarning(warningFieldMsg, warningPriceMsg);
+                string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningPriceMsg);
+                string title = MessageMaker.TitleMaker(warningBool);
 
                 if (!warningBool)
                 {

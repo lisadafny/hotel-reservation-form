@@ -32,12 +32,26 @@ namespace HotelReservationForm
 
         private void ManageReservationsOnLoad(object sender, EventArgs e)
         {
-            PopulateGrid();
+            try
+            {
+                PopulateGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void RefreshBtnClick(object sender, EventArgs e)
         {
-            PopulateGrid();
+            try
+            {
+                PopulateGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAddRoomClick(object sender, EventArgs e)

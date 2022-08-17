@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
-    public class MessageMakerClass
+    public class MessageMaker
     {
         
         public static string EmptyValidation(string fieldOne, string fieldTwo)
@@ -88,6 +88,11 @@ namespace HotelReservationForm
                 return "WARNING";
             }
             return "SUCCESS";
+        }
+
+        public static void LazyExcuse()
+        {
+            MessageBox.Show("Sorry, not available", ":(");
         }
     }
 }

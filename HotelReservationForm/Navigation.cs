@@ -17,18 +17,36 @@ namespace HotelReservationForm
             InitializeComponent();
         }
 
-        private void makeAReservationClick(object sender, EventArgs e)
+        private void MakeAReservationClick(object sender, EventArgs e)
         {
-            var customerReservation = new CustomerReservation();
-            customerReservation.MdiParent = this;
+            var customerReservation = new CustomerReservation
+            {
+                MdiParent = this
+            };
             customerReservation.Show();
         }
 
-        private void manageReservationsClick(object sender, EventArgs e)
+        private void ManageReservationsClick(object sender, EventArgs e)
         {
-            var dbListing = new ManageReservations();
-            dbListing.MdiParent = this;
-            dbListing.Show();
+            var roomListing = new ManageReservations
+            {
+                MdiParent = this
+            };
+            roomListing.Show();
+        }
+
+        private void ViewArchiveClick(object sender, EventArgs e)
+        {
+            var viewArchive = new ManageRecords
+            {
+                MdiParent = this
+            };
+            viewArchive.Show();
+        }
+
+        private void bugReportClick(object sender, EventArgs e)
+        {
+            MessageMaker.LazyExcuse();
         }
     }
 }
