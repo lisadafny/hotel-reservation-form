@@ -72,17 +72,19 @@ namespace HotelReservationForm
         {
             try
             {
-                if (!gvHotelReservations.SelectedRows.Count.Equals(0))
+                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelReservations);
+
+                if (noRowsSelected)
+                {
+                    MessageBox.Show("Select a row!");
+                }
+                else
                 {
                     var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
                     var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
                     var editRoom = new AddEditRoom(selectedRoom);
                     editRoom.MdiParent = this.MdiParent;
                     editRoom.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Select a row!");
                 }
             }
             catch (Exception ex)
@@ -95,8 +97,13 @@ namespace HotelReservationForm
         {
             try
             {
+                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelReservations);
 
-                if (!gvHotelReservations.SelectedRows.Count.Equals(0))
+                if (noRowsSelected)
+                {
+                    MessageBox.Show("Select a row!");
+                }
+                else
                 {
                     DialogResult result = MessageBox.Show("Do you really want to delete this room?",
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -113,10 +120,6 @@ namespace HotelReservationForm
                     {
                         MessageBox.Show("Operation cancelled");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Select a row!");
                 }
             }
             catch (Exception ex)

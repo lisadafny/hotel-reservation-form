@@ -33,7 +33,7 @@ namespace HotelReservationForm
             {
                 string warningFieldMsg = MessageMaker.EmptyValidation(customerName, room);
                 string warningDateMsg = MessageMaker.DateValidation(dateIn, dateOut);
-                bool warningBool = MessageMaker.HasWarning(warningFieldMsg, warningDateMsg);
+                bool warningBool = ValidateStatus.HasWarning(warningFieldMsg, warningDateMsg);
                 string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningDateMsg);
                 string messageSucess = MessageMaker.SuccessReservationMessage(customerName, room, dateIn, dateOut);
                 string title = MessageMaker.TitleMaker(warningBool);

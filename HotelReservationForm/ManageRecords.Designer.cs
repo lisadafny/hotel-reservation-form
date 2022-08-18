@@ -41,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 9);
+            this.label1.Location = new System.Drawing.Point(46, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(518, 55);
             this.label1.TabIndex = 2;
@@ -49,7 +49,7 @@
             // 
             // refreshBtn
             // 
-            this.refreshBtn.Location = new System.Drawing.Point(68, 375);
+            this.refreshBtn.Location = new System.Drawing.Point(56, 414);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(101, 24);
             this.refreshBtn.TabIndex = 10;
@@ -59,7 +59,7 @@
             // 
             // btnDeleteRecord
             // 
-            this.btnDeleteRecord.Location = new System.Drawing.Point(575, 327);
+            this.btnDeleteRecord.Location = new System.Drawing.Point(414, 67);
             this.btnDeleteRecord.Name = "btnDeleteRecord";
             this.btnDeleteRecord.Size = new System.Drawing.Size(173, 42);
             this.btnDeleteRecord.TabIndex = 9;
@@ -69,7 +69,7 @@
             // 
             // btnEditRecord
             // 
-            this.btnEditRecord.Location = new System.Drawing.Point(575, 211);
+            this.btnEditRecord.Location = new System.Drawing.Point(235, 67);
             this.btnEditRecord.Name = "btnEditRecord";
             this.btnEditRecord.Size = new System.Drawing.Size(173, 42);
             this.btnEditRecord.TabIndex = 8;
@@ -79,7 +79,7 @@
             // 
             // btnAddRecord
             // 
-            this.btnAddRecord.Location = new System.Drawing.Point(575, 106);
+            this.btnAddRecord.Location = new System.Drawing.Point(56, 67);
             this.btnAddRecord.Name = "btnAddRecord";
             this.btnAddRecord.Size = new System.Drawing.Size(173, 42);
             this.btnAddRecord.TabIndex = 7;
@@ -90,9 +90,9 @@
             // gvHotelRecord
             // 
             this.gvHotelRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvHotelRecord.Location = new System.Drawing.Point(56, 106);
+            this.gvHotelRecord.Location = new System.Drawing.Point(56, 133);
             this.gvHotelRecord.Name = "gvHotelRecord";
-            this.gvHotelRecord.Size = new System.Drawing.Size(421, 263);
+            this.gvHotelRecord.Size = new System.Drawing.Size(667, 263);
             this.gvHotelRecord.TabIndex = 6;
             // 
             // ManageRecords

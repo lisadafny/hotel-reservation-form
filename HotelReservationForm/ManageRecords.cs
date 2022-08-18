@@ -21,25 +21,28 @@ namespace HotelReservationForm
 
         private void BtnAddRecordClick(object sender, EventArgs e)
         {
-            MessageMaker.LazyExcuse();
+            var addRecord = new AddEditRecord();
+            addRecord.MdiParent = this.MdiParent;
+            addRecord.Show();
         }
 
         private void BtnEditRecordClick(object sender, EventArgs e)
         {
             try
             {
-                if (!gvHotelRecord.SelectedRows.Count.Equals(0))
+                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelRecord);
+
+                if (noRowsSelected)
                 {
-                    //var id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
-                    //var selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
-                    //var editRoom = new AddEditRoom(selectedRoom);
-                    //editRoom.MdiParent = this.MdiParent;
-                    //editRoom.Show();
-                    MessageMaker.LazyExcuse();
+                    MessageBox.Show("Select a row!");
                 }
                 else
                 {
-                    MessageBox.Show("Select a row!");
+                    var id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
+                    var selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
+                    var editRecord = new AddEditRecord(selectedRecord);
+                    editRecord.MdiParent = this.MdiParent;
+                    editRecord.Show();
                 }
             }
             catch (Exception ex)
@@ -52,8 +55,13 @@ namespace HotelReservationForm
         {
             try
             {
+                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelRecord);
 
-                if (!gvHotelRecord.SelectedRows.Count.Equals(0))
+                if (noRowsSelected)
+                {
+                    MessageBox.Show("Select a row!");
+                }
+                else
                 {
                     DialogResult result = MessageBox.Show("Do you really want to delete this room?",
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -70,10 +78,6 @@ namespace HotelReservationForm
                     {
                         MessageBox.Show("Operation cancelled");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Select a row!");
                 }
             }
             catch (Exception ex)
