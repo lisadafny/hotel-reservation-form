@@ -17,3 +17,5 @@ D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelR
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.Navigation.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.ManageReservations.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.AddEditRoom.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.ManageRecords.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.AddEditRecord.resources

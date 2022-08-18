@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
-    public class MessageMakerClass
+    public class MessageMaker
     {
         
         public static string EmptyValidation(string fieldOne, string fieldTwo)
@@ -42,29 +42,11 @@ namespace HotelReservationForm
             return "Please put a valid price";
         }
 
-
-        public static bool HasWarning(string validationOne, string validationTwo)
-        {
-            if(validationOne != string.Empty || validationTwo != string.Empty)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool HasWarning(string validation)
-        {
-            if (validation != string.Empty)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static string WarningMessage(string warningTypeOne, string warningTypeTwo)
+        public static string WarningMessage(string warningTypeOne, string warningTypeTwo = "", string warningTypeThree = "")
         {
             return $"{warningTypeOne}\n\r" +
-                        $"{warningTypeTwo}";
+                        $"{warningTypeTwo}\n\r" +
+                        $"{warningTypeThree}";
         }
         public static string SuccessReservationMessage(string fieldOne, string fieldTwo, DateTime start, DateTime end)
         {
@@ -81,6 +63,14 @@ namespace HotelReservationForm
             }
             return $"{name} was created with success!";
         }
+        public static string SuccessAddEdit(bool edit)
+        {
+            if (edit)
+            {
+                return $"Edited with success!";
+            }
+            return $"Created with success!";
+        }
         public static string TitleMaker(bool error)
         {
             if (error)
@@ -88,6 +78,11 @@ namespace HotelReservationForm
                 return "WARNING";
             }
             return "SUCCESS";
+        }
+
+        public static void LazyExcuse()
+        {
+            MessageBox.Show("Sorry, not available", ":(");
         }
     }
 }

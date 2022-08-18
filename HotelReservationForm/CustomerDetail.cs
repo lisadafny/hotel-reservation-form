@@ -21,6 +21,6 @@ namespace HotelReservationForm
         public Nullable<decimal> Price { get; set; }
         public int TypeOfRoom { get; set; }
     
-        public virtual TypeOfRoom TypeOfRoom1 { get; set; }
+        public virtual TypeOfRoom TypeOfRoomInfo { get; set; }
     }
 }

@@ -31,12 +31,12 @@ namespace HotelReservationForm
 
             try
             {
-                string warningFieldMsg = MessageMakerClass.EmptyValidation(customerName, room);
-                string warningDateMsg = MessageMakerClass.DateValidation(dateIn, dateOut);
-                bool warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningDateMsg);
-                string messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningDateMsg);
-                string messageSucess = MessageMakerClass.SuccessReservationMessage(customerName, room, dateIn, dateOut);
-                string title = MessageMakerClass.TitleMaker(warningBool);
+                string warningFieldMsg = MessageMaker.EmptyValidation(customerName, room);
+                string warningDateMsg = MessageMaker.DateValidation(dateIn, dateOut);
+                bool warningBool = ValidateStatus.HasWarning(warningFieldMsg, warningDateMsg);
+                string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningDateMsg);
+                string messageSucess = MessageMaker.SuccessReservationMessage(customerName, room, dateIn, dateOut);
+                string title = MessageMaker.TitleMaker(warningBool);
 
                 if (warningBool)
                 {

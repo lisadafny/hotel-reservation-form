@@ -42,12 +42,12 @@ namespace HotelReservationForm
         {
             try
             {
-                string warningFieldMsg = MessageMakerClass.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
-                string warningPriceMsg = MessageMakerClass.PriceValidation(tbPriceRoom.Text);
-                string successMsg = MessageMakerClass.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
-                bool warningBool = MessageMakerClass.HasWarning(warningFieldMsg, warningPriceMsg);
-                string messageError = MessageMakerClass.WarningMessage(warningFieldMsg, warningPriceMsg);
-                string title = MessageMakerClass.TitleMaker(warningBool);
+                string warningFieldMsg = MessageMaker.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
+                string warningPriceMsg = MessageMaker.PriceValidation(tbPriceRoom.Text);
+                string successMsg = MessageMaker.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
+                bool warningBool = ValidateStatus.HasWarning(warningFieldMsg, warningPriceMsg);
+                string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningPriceMsg);
+                string title = MessageMaker.TitleMaker(warningBool);
 
                 if (!warningBool)
                 {
@@ -57,11 +57,6 @@ namespace HotelReservationForm
                         var room = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
                         room.name = tbRoomName.Text;
                         room.price = decimal.Parse(tbPriceRoom.Text);
-
-                        _hotelReservationEntities.SaveChanges();
-
-                        MessageBox.Show(successMsg, title);
-                        Close();
                     }
                     else
                     {
@@ -70,14 +65,12 @@ namespace HotelReservationForm
                             name = tbRoomName.Text,
                             price = decimal.Parse(tbPriceRoom.Text)
                         };
-
                         _hotelReservationEntities.TypeOfRooms.Add(newRoom);
-                        _hotelReservationEntities.SaveChanges();
-
-                        MessageBox.Show(successMsg, title);
-                        Close();
-
                     }
+                    _hotelReservationEntities.SaveChanges();
+
+                    MessageBox.Show(successMsg, title);
+                    Close();
                 }
                 else
                 {
