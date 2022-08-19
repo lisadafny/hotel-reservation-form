@@ -102,7 +102,7 @@
             this.bugReportToolStripMenuItem.Name = "bugReportToolStripMenuItem";
             this.bugReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bugReportToolStripMenuItem.Text = "Bug report";
-            this.bugReportToolStripMenuItem.Click += new System.EventHandler(this.bugReportClick);
+            this.bugReportToolStripMenuItem.Click += new System.EventHandler(this.BugReportClick);
             // 
             // Navigation
             // 

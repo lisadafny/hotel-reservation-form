@@ -21,9 +21,17 @@ namespace HotelReservationForm
 
         private void BtnAddRecordClick(object sender, EventArgs e)
         {
-            var addRecord = new AddEditRecord();
-            addRecord.MdiParent = this.MdiParent;
-            addRecord.Show();
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = OpenForms.Any(x => x.Name == "AddEditRecord");
+            if (!isOpen)
+            {
+                AddEditRecord addRecord = new AddEditRecord
+                {
+                    MdiParent = this.MdiParent
+                };
+                addRecord.Show();
+            }
+            return;
         }
 
         private void BtnEditRecordClick(object sender, EventArgs e)
@@ -38,11 +46,19 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    var id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
-                    var selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
-                    var editRecord = new AddEditRecord(selectedRecord);
-                    editRecord.MdiParent = this.MdiParent;
-                    editRecord.Show();
+                    var OpenForms = Application.OpenForms.Cast<Form>();
+                    bool isOpen = OpenForms.Any(x => x.Name == "AddEditRecord");
+                    if (!isOpen)
+                    {
+                        int id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
+                        CustomerDetail selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
+                        AddEditRecord editRecord = new AddEditRecord(selectedRecord)
+                        {
+                            MdiParent = this.MdiParent
+                        };
+                        editRecord.Show();
+                    }
+                    return;
                 }
             }
             catch (Exception ex)
@@ -67,8 +83,8 @@ namespace HotelReservationForm
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        var id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
-                        var selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
+                        int id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
+                        CustomerDetail selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
                         _hotelReservationEntities.CustomerDetails.Remove(selectedRecord);
                         _hotelReservationEntities.SaveChanges();
                         GetRecords();

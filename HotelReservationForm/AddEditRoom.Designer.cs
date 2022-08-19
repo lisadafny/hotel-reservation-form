@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbPriceRoom = new System.Windows.Forms.TextBox();
-            this.roomPriceLbl = new System.Windows.Forms.Label();
             this.roomNameLbl = new System.Windows.Forms.Label();
             this.tbRoomName = new System.Windows.Forms.TextBox();
+            this.roomPriceLbl = new System.Windows.Forms.Label();
             this.saveChanges = new System.Windows.Forms.Button();
             this.cancelChanges = new System.Windows.Forms.Button();
             this.pageHeader = new System.Windows.Forms.Label();
@@ -48,9 +48,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.Controls.Add(this.tbPriceRoom, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.roomNameLbl, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbRoomName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.roomPriceLbl, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 227);
+            this.tableLayoutPanel1.Controls.Add(this.tbRoomName, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 92);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -64,16 +64,6 @@
             this.tbPriceRoom.Name = "tbPriceRoom";
             this.tbPriceRoom.Size = new System.Drawing.Size(77, 20);
             this.tbPriceRoom.TabIndex = 4;
-            // 
-            // roomPriceLbl
-            // 
-            this.roomPriceLbl.AutoSize = true;
-            this.roomPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomPriceLbl.Location = new System.Drawing.Point(3, 42);
-            this.roomPriceLbl.Name = "roomPriceLbl";
-            this.roomPriceLbl.Size = new System.Drawing.Size(61, 25);
-            this.roomPriceLbl.TabIndex = 2;
-            this.roomPriceLbl.Text = "Price";
             // 
             // roomNameLbl
             // 
@@ -92,10 +82,20 @@
             this.tbRoomName.Size = new System.Drawing.Size(573, 20);
             this.tbRoomName.TabIndex = 3;
             // 
+            // roomPriceLbl
+            // 
+            this.roomPriceLbl.AutoSize = true;
+            this.roomPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomPriceLbl.Location = new System.Drawing.Point(3, 42);
+            this.roomPriceLbl.Name = "roomPriceLbl";
+            this.roomPriceLbl.Size = new System.Drawing.Size(61, 25);
+            this.roomPriceLbl.TabIndex = 2;
+            this.roomPriceLbl.Text = "Price";
+            // 
             // saveChanges
             // 
             this.saveChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChanges.Location = new System.Drawing.Point(100, 405);
+            this.saveChanges.Location = new System.Drawing.Point(85, 182);
             this.saveChanges.Name = "saveChanges";
             this.saveChanges.Size = new System.Drawing.Size(236, 36);
             this.saveChanges.TabIndex = 1;
@@ -106,19 +106,19 @@
             // cancelChanges
             // 
             this.cancelChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelChanges.Location = new System.Drawing.Point(437, 405);
+            this.cancelChanges.Location = new System.Drawing.Point(422, 182);
             this.cancelChanges.Name = "cancelChanges";
             this.cancelChanges.Size = new System.Drawing.Size(236, 36);
             this.cancelChanges.TabIndex = 2;
             this.cancelChanges.Text = "CANCEL";
             this.cancelChanges.UseVisualStyleBackColor = true;
-            this.cancelChanges.Click += new System.EventHandler(this.cancelChangesClick);
+            this.cancelChanges.Click += new System.EventHandler(this.CancelChangesClick);
             // 
             // pageHeader
             // 
             this.pageHeader.AutoSize = true;
             this.pageHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageHeader.Location = new System.Drawing.Point(230, 43);
+            this.pageHeader.Location = new System.Drawing.Point(229, 9);
             this.pageHeader.Name = "pageHeader";
             this.pageHeader.Size = new System.Drawing.Size(332, 55);
             this.pageHeader.TabIndex = 3;
@@ -128,7 +128,7 @@
             // 
             this.idRoomLbl.AutoSize = true;
             this.idRoomLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idRoomLbl.Location = new System.Drawing.Point(457, 199);
+            this.idRoomLbl.Location = new System.Drawing.Point(431, 64);
             this.idRoomLbl.Name = "idRoomLbl";
             this.idRoomLbl.Size = new System.Drawing.Size(29, 25);
             this.idRoomLbl.TabIndex = 4;
@@ -138,7 +138,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(342, 199);
+            this.label1.Location = new System.Drawing.Point(316, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 25);
             this.label1.TabIndex = 5;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 229);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.idRoomLbl);
             this.Controls.Add(this.pageHeader);
