@@ -44,7 +44,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    var reservationRecord = new CustomerDetail
+                    CustomerDetail reservationRecord = new CustomerDetail
                     {
                         CustomerName = customerName,
                         ReservStart = dateIn,

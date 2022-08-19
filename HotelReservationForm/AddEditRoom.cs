@@ -84,7 +84,7 @@ namespace HotelReservationForm
         }
 
 
-        private void cancelChangesClick(object sender, EventArgs e)
+        private void CancelChangesClick(object sender, EventArgs e)
         {
             Close();
         }

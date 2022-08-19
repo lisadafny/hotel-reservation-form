@@ -22,7 +22,7 @@ namespace HotelReservationForm
         public void PopulateGrid()
         {
             var rooms = _hotelReservationEntities.TypeOfRooms
-            .Select(x => new { id = x.id, Name = x.name, Price = x.price })
+            .Select(x => new {x.id, Name = x.name, Price = x.price })
             .ToList();
             gvHotelReservations.DataSource = rooms;
             gvHotelReservations.Columns[0].Visible = false;
@@ -58,9 +58,17 @@ namespace HotelReservationForm
         {
             try
             {
-                var addRoom = new AddEditRoom();
-                addRoom.MdiParent = this.MdiParent;
-                addRoom.Show();
+                var OpenForms = Application.OpenForms.Cast<Form>();
+                bool isOpen = OpenForms.Any(x => x.Name == "AddEditRoom");
+                if (!isOpen)
+                {
+                    AddEditRoom addRoom = new AddEditRoom
+                    {
+                        MdiParent = this.MdiParent
+                    };
+                    addRoom.Show();
+                }
+                return;
             }
             catch (Exception ex)
             {
@@ -80,11 +88,19 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
-                    var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
-                    var editRoom = new AddEditRoom(selectedRoom);
-                    editRoom.MdiParent = this.MdiParent;
-                    editRoom.Show();
+                    var OpenForms = Application.OpenForms.Cast<Form>();
+                    bool isOpen = OpenForms.Any(x => x.Name == "AddEditRoom");
+                    if (!isOpen)
+                    {
+                        int id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
+                        TypeOfRoom selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
+                        AddEditRoom editRoom = new AddEditRoom(selectedRoom)
+                        {
+                            MdiParent = this.MdiParent
+                        };
+                        editRoom.Show();
+                    }
+                    return;
                 }
             }
             catch (Exception ex)
@@ -109,8 +125,8 @@ namespace HotelReservationForm
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        var id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
-                        var selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
+                        int id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
+                        TypeOfRoom selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
                         _hotelReservationEntities.TypeOfRooms.Remove(selectedRoom);
                         _hotelReservationEntities.SaveChanges();
                         gvHotelReservations.Refresh();

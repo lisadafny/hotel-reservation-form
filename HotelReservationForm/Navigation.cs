@@ -19,32 +19,49 @@ namespace HotelReservationForm
 
         private void MakeAReservationClick(object sender, EventArgs e)
         {
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = OpenForms.Any(x => x.Name == "CustomerReservation");
+            if (!isOpen) { 
             var customerReservation = new CustomerReservation
             {
                 MdiParent = this
             };
             customerReservation.Show();
+            }
+            return;
         }
 
         private void ManageReservationsClick(object sender, EventArgs e)
         {
-            var roomListing = new ManageReservations
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = OpenForms.Any(x => x.Name == "ManageReservations");
+            if (!isOpen)
             {
-                MdiParent = this
-            };
-            roomListing.Show();
+                ManageReservations roomListing = new ManageReservations
+                {
+                    MdiParent = this
+                };
+                roomListing.Show();
+            }
+            return;
         }
 
         private void ViewArchiveClick(object sender, EventArgs e)
         {
-            var viewArchive = new ManageRecords
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = OpenForms.Any(x => x.Name == "ManageRecords");
+            if (!isOpen)
+            {
+                ManageRecords viewArchive = new ManageRecords
             {
                 MdiParent = this
             };
             viewArchive.Show();
+            }
+            return;
         }
 
-        private void bugReportClick(object sender, EventArgs e)
+        private void BugReportClick(object sender, EventArgs e)
         {
             MessageMaker.LazyExcuse();
         }
