@@ -16,6 +16,14 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TypeOfRoom" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="TypeOfRoom">
           <Key>
             <PropertyRef Name="id" />
@@ -38,6 +46,7 @@
         </Association>
         <EntityContainer Name="HotelReservationModelStoreContainer">
           <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfRoom" EntityType="Self.TypeOfRoom" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CustomerDetail_TypeOfRoom" Association="Self.FK_CustomerDetail_TypeOfRoom">
             <End Role="TypeOfRoom" EntitySet="TypeOfRoom" />
@@ -55,6 +64,7 @@
             <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
             <End Role="CustomerDetail" EntitySet="CustomerDetails" />
           </AssociationSet>
+          <EntitySet Name="Logins" EntityType="HotelReservationModel.Login" />
         </EntityContainer>
         <EntityType Name="CustomerDetail">
           <Key>
@@ -89,6 +99,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -112,6 +130,15 @@
               <MappingFragment StoreEntitySet="TypeOfRoom">
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="HotelReservationModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

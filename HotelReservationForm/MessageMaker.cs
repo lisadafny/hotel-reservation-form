@@ -80,6 +80,16 @@ namespace HotelReservationForm
             return "SUCCESS";
         }
 
+        public static void InvalidCredentials()
+        {
+            MessageBox.Show("Invalid credentials");
+        }
+
+        public static void ErrorMessage()
+        {
+            MessageBox.Show("Something went wrong... Please try again later");
+        }
+
         public static void LazyExcuse()
         {
             MessageBox.Show("Sorry, not available", ":(");

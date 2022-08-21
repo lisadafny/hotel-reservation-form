@@ -12,9 +12,11 @@ namespace HotelReservationForm
 {
     public partial class Navigation : Form
     {
-        public Navigation()
+        private UserLogin _userLogin;
+        public Navigation(UserLogin login)
         {
             InitializeComponent();
+            _userLogin = login;
         }
 
         private void MakeAReservationClick(object sender, EventArgs e)
@@ -64,6 +66,11 @@ namespace HotelReservationForm
         private void BugReportClick(object sender, EventArgs e)
         {
             MessageMaker.LazyExcuse();
+        }
+
+        private void NavigationClosing(object sender, FormClosingEventArgs e)
+        {
+            _userLogin.Close();
         }
     }
 }

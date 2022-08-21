@@ -100,7 +100,7 @@
             // bugReportToolStripMenuItem
             // 
             this.bugReportToolStripMenuItem.Name = "bugReportToolStripMenuItem";
-            this.bugReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bugReportToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.bugReportToolStripMenuItem.Text = "Bug report";
             this.bugReportToolStripMenuItem.Click += new System.EventHandler(this.BugReportClick);
             // 
@@ -114,6 +114,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Navigation";
             this.Text = "Welcome to Cool Hotel!";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NavigationClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

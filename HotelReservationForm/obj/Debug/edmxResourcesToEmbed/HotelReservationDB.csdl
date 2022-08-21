@@ -7,6 +7,7 @@
       <End Role="TypeOfRoom" EntitySet="TypeOfRooms" />
       <End Role="CustomerDetail" EntitySet="CustomerDetails" />
     </AssociationSet>
+    <EntitySet Name="Logins" EntityType="HotelReservationModel.Login" />
   </EntityContainer>
   <EntityType Name="CustomerDetail">
     <Key>
@@ -41,4 +42,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
