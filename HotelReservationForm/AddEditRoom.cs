@@ -14,20 +14,24 @@ namespace HotelReservationForm
     {
         private readonly HotelReservationEntities _hotelReservationEntities;
         private readonly bool _isEditRoom = false;
-        public AddEditRoom()
+        private readonly ManageReservations _roomsData;
+
+        public AddEditRoom(ManageReservations roomsData)
         {
             InitializeComponent();
             pageHeader.Text = "Add new room";
             _hotelReservationEntities = new HotelReservationEntities();
+            _roomsData = roomsData;
         }
 
-        public AddEditRoom(TypeOfRoom roomEdit)
+        public AddEditRoom(TypeOfRoom roomEdit, ManageReservations roomsData)
         {
             InitializeComponent();
             pageHeader.Text = "Edit room";
             PopulateFields(roomEdit);
             _hotelReservationEntities = new HotelReservationEntities();
             _isEditRoom = true;
+            _roomsData = roomsData;
         }
 
         private void PopulateFields(TypeOfRoom room)
@@ -70,6 +74,7 @@ namespace HotelReservationForm
                     _hotelReservationEntities.SaveChanges();
 
                     MessageBox.Show(successMsg, title);
+                    _roomsData.PopulateGrid();
                     Close();
                 }
                 else

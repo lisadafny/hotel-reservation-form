@@ -62,7 +62,7 @@ namespace HotelReservationForm
                 bool isOpen = OpenForms.Any(x => x.Name == "AddEditRoom");
                 if (!isOpen)
                 {
-                    AddEditRoom addRoom = new AddEditRoom
+                    AddEditRoom addRoom = new AddEditRoom(this)
                     {
                         MdiParent = this.MdiParent
                     };
@@ -94,7 +94,7 @@ namespace HotelReservationForm
                     {
                         int id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
                         TypeOfRoom selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
-                        AddEditRoom editRoom = new AddEditRoom(selectedRoom)
+                        AddEditRoom editRoom = new AddEditRoom(selectedRoom, this)
                         {
                             MdiParent = this.MdiParent
                         };
@@ -129,7 +129,7 @@ namespace HotelReservationForm
                         TypeOfRoom selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
                         _hotelReservationEntities.TypeOfRooms.Remove(selectedRoom);
                         _hotelReservationEntities.SaveChanges();
-                        gvHotelReservations.Refresh();
+                        PopulateGrid();
                         MessageBox.Show($"Removed Room ID {id} with success!");
                     }
                     else
