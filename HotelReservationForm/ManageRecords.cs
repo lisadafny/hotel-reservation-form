@@ -25,7 +25,7 @@ namespace HotelReservationForm
             bool isOpen = OpenForms.Any(x => x.Name == "AddEditRecord");
             if (!isOpen)
             {
-                AddEditRecord addRecord = new AddEditRecord
+                AddEditRecord addRecord = new AddEditRecord(this)
                 {
                     MdiParent = this.MdiParent
                 };
@@ -52,7 +52,7 @@ namespace HotelReservationForm
                     {
                         int id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
                         CustomerDetail selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);
-                        AddEditRecord editRecord = new AddEditRecord(selectedRecord)
+                        AddEditRecord editRecord = new AddEditRecord(selectedRecord, this)
                         {
                             MdiParent = this.MdiParent
                         };
@@ -126,7 +126,7 @@ namespace HotelReservationForm
             }
         }
 
-        private void GetRecords()
+        public void GetRecords()
         {
             var records = _hotelReservationEntities.CustomerDetails.Select(x => new
             {

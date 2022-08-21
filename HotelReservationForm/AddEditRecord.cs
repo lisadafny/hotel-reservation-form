@@ -14,12 +14,14 @@ namespace HotelReservationForm
     {
         private readonly HotelReservationEntities _hotelReservationEntities;
         private readonly bool _isEditRecord = false;
-        public AddEditRecord()
+        private readonly ManageRecords _recordsData;
+        public AddEditRecord(ManageRecords records)
         {
             InitializeComponent();
             _hotelReservationEntities = new HotelReservationEntities();
+            _recordsData = records;
         }
-        public AddEditRecord(CustomerDetail recordEdit)
+        public AddEditRecord(CustomerDetail recordEdit, ManageRecords records)
         {
             InitializeComponent();
             _hotelReservationEntities = new HotelReservationEntities();
@@ -27,6 +29,7 @@ namespace HotelReservationForm
             this.Text = "Edit Record Info";
             PopulateFields(recordEdit);
             _isEditRecord = true;
+            _recordsData = records; 
         }
 
         private void PopulateFields(CustomerDetail record)
@@ -91,6 +94,7 @@ namespace HotelReservationForm
                     _hotelReservationEntities.SaveChanges();
 
                     MessageBox.Show(messageSucess, title);
+                    _recordsData.GetRecords();
                     Close();
                 }
             }
