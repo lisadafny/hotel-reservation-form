@@ -8,7 +8,11 @@
         <EntityTypeShape EntityType="HotelReservationModel.CustomerDetail" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="HotelReservationModel.TypeOfRoom" Width="1.5" PointX="0.75" PointY="1.25" />
         <AssociationConnector Association="HotelReservationModel.FK_CustomerDetail_TypeOfRoom" />
-        <EntityTypeShape EntityType="HotelReservationModel.Login" Width="1.5" PointX="6.625" PointY="2" />
+        <EntityTypeShape EntityType="HotelReservationModel.Login" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="HotelReservationModel.Role" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="HotelReservationModel.UserRole" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="HotelReservationModel.FK_UserRoles_Login" />
+        <AssociationConnector Association="HotelReservationModel.FK_UserRoles_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

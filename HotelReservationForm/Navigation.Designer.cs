@@ -36,6 +36,7 @@
             this.viewArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,8 @@
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageReservationsToolStripMenuItem,
-            this.viewArchiveToolStripMenuItem});
+            this.viewArchiveToolStripMenuItem,
+            this.manageUsersToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -78,15 +80,15 @@
             // manageReservationsToolStripMenuItem
             // 
             this.manageReservationsToolStripMenuItem.Name = "manageReservationsToolStripMenuItem";
-            this.manageReservationsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.manageReservationsToolStripMenuItem.Text = "Manage Reservations";
+            this.manageReservationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageReservationsToolStripMenuItem.Text = "Manage Rooms";
             this.manageReservationsToolStripMenuItem.Click += new System.EventHandler(this.ManageReservationsClick);
             // 
             // viewArchiveToolStripMenuItem
             // 
             this.viewArchiveToolStripMenuItem.Name = "viewArchiveToolStripMenuItem";
-            this.viewArchiveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.viewArchiveToolStripMenuItem.Text = "View Archive";
+            this.viewArchiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewArchiveToolStripMenuItem.Text = "Manage Archive";
             this.viewArchiveToolStripMenuItem.Click += new System.EventHandler(this.ViewArchiveClick);
             // 
             // helpToolStripMenuItem
@@ -103,6 +105,13 @@
             this.bugReportToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.bugReportToolStripMenuItem.Text = "Bug report";
             this.bugReportToolStripMenuItem.Click += new System.EventHandler(this.BugReportClick);
+            // 
+            // manageUsersToolStripMenuItem
+            // 
+            this.manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
+            this.manageUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageUsersToolStripMenuItem.Text = "Manage Users";
+            this.manageUsersToolStripMenuItem.Click += new System.EventHandler(this.ManageUsersClick);
             // 
             // Navigation
             // 
@@ -131,5 +140,6 @@
         private System.Windows.Forms.ToolStripMenuItem reservationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeAReservationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewArchiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageUsersToolStripMenuItem;
     }
 }

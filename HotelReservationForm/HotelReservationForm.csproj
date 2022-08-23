@@ -122,6 +122,9 @@
     <Compile Include="MessageMaker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>HotelReservationDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="TypeOfRoom.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
@@ -130,6 +133,9 @@
     </Compile>
     <Compile Include="UserLogin.Designer.cs">
       <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ValidateStatus.cs" />
     <EmbeddedResource Include="AddEditRecord.resx">
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageReservations.resx">
       <DependentUpon>ManageReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsers.resx">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Navigation.resx">
       <DependentUpon>Navigation.cs</DependentUpon>

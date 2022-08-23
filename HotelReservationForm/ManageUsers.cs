@@ -16,5 +16,25 @@ namespace HotelReservationForm
         {
             InitializeComponent();
         }
+
+        private void BtnAddUserClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEditUserClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteUserClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnRefreshClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

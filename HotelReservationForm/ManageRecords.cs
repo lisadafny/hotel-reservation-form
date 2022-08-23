@@ -21,9 +21,7 @@ namespace HotelReservationForm
 
         private void BtnAddRecordClick(object sender, EventArgs e)
         {
-            var OpenForms = Application.OpenForms.Cast<Form>();
-            bool isOpen = OpenForms.Any(x => x.Name == "AddEditRecord");
-            if (!isOpen)
+            if (!ValidateStatus.FormIsOpen("AddEditRecord"))
             {
                 AddEditRecord addRecord = new AddEditRecord(this)
                 {
@@ -46,9 +44,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    var OpenForms = Application.OpenForms.Cast<Form>();
-                    bool isOpen = OpenForms.Any(x => x.Name == "AddEditRecord");
-                    if (!isOpen)
+                    if (!ValidateStatus.FormIsOpen("AddEditRecord"))
                     {
                         int id = (int)gvHotelRecord.SelectedRows[0].Cells["id"].Value;
                         CustomerDetail selectedRecord = _hotelReservationEntities.CustomerDetails.FirstOrDefault(x => x.id == id);

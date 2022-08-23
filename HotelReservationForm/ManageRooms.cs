@@ -58,9 +58,7 @@ namespace HotelReservationForm
         {
             try
             {
-                var OpenForms = Application.OpenForms.Cast<Form>();
-                bool isOpen = OpenForms.Any(x => x.Name == "AddEditRoom");
-                if (!isOpen)
+                if (!ValidateStatus.FormIsOpen("AddEditRoom"))
                 {
                     AddEditRoom addRoom = new AddEditRoom(this)
                     {
@@ -80,17 +78,13 @@ namespace HotelReservationForm
         {
             try
             {
-                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelReservations);
-
-                if (noRowsSelected)
+                if (ValidateStatus.ZeroSelectedRows(gvHotelReservations))
                 {
                     MessageBox.Show("Select a row!");
                 }
                 else
                 {
-                    var OpenForms = Application.OpenForms.Cast<Form>();
-                    bool isOpen = OpenForms.Any(x => x.Name == "AddEditRoom");
-                    if (!isOpen)
+                    if (!ValidateStatus.FormIsOpen("AddEditRoom")
                     {
                         int id = (int)gvHotelReservations.SelectedRows[0].Cells["id"].Value;
                         TypeOfRoom selectedRoom = _hotelReservationEntities.TypeOfRooms.FirstOrDefault(x => x.id == id);
@@ -113,9 +107,7 @@ namespace HotelReservationForm
         {
             try
             {
-                bool noRowsSelected = ValidateStatus.ZeroSelectedRows(gvHotelReservations);
-
-                if (noRowsSelected)
+                if (ValidateStatus.ZeroSelectedRows(gvHotelReservations))
                 {
                     MessageBox.Show("Select a row!");
                 }

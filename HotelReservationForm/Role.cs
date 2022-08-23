@@ -12,18 +12,16 @@ namespace HotelReservationForm
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Login()
+        public Role()
         {
             this.UserRoles = new HashSet<UserRole>();
         }
     
         public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public Nullable<bool> active { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserRole> UserRoles { get; set; }
