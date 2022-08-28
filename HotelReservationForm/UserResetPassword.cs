@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelReservationForm
@@ -27,11 +21,14 @@ namespace HotelReservationForm
             {
                 string password = passwordEntryOne.Text;
                 string confirmPassword = passwordEntryTwo.Text;
+                Login userLogin = _hotelReservationEntities.Logins.FirstOrDefault(x => x.id == _credentials.id);
 
                 if (password == confirmPassword)
                 {
-                    _credentials.password = Cryptography.EncryptPassword(password);
+                    userLogin.password = Cryptography.EncryptPassword(password);
                     _hotelReservationEntities.SaveChanges();
+                    MessageBox.Show("Password changed!");
+                    Close();
                 }
                 else
                 {
