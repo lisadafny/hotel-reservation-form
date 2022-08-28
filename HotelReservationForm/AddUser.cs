@@ -44,12 +44,13 @@ namespace HotelReservationForm
                 UserRole userRole = new UserRole
                 {
                     roleID = roleId,
-                    id = id
+                    userID = id
                 };
                 _hotelReservationEntities.UserRoles.Add(userRole);
                 _hotelReservationEntities.SaveChanges();
                 _userGrid.PopulateGrid();
                 MessageBox.Show("New user added!");
+                Close();
             }
             catch (Exception ex)
             {

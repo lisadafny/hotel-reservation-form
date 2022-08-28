@@ -30,6 +30,7 @@ namespace HotelReservationForm
                     {
                         MdiParent = this.MdiParent
                     };
+                    addUser.Show();
                 }
                 return;
             }
