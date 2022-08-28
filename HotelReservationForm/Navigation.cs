@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
     public partial class Navigation : Form
     {
-        private UserLogin _userLogin;
-        public Navigation(UserLogin login)
+        private readonly UserLogin _userLogin;
+        public Login credentials;
+        public string roleName;
+        public Navigation(UserLogin login, Login user)
         {
             InitializeComponent();
             _userLogin = login;
+            credentials = user;
+            roleName = credentials.UserRoles.FirstOrDefault().Role.name;
         }
 
         private void MakeAReservationClick(object sender, EventArgs e)
@@ -72,6 +77,19 @@ namespace HotelReservationForm
                 manageUsers.Show();
             }
             return;
+        }
+
+        private void NavigationOnLoad(object sender, EventArgs e)
+        {
+            if(roleName != "Admin")
+            {
+                adminMenu.Enabled = false;
+            }
+            else
+            {
+                adminMenu.Enabled = true;
+            }
+            tsLoginText.Text = $"Logged in as: {credentials.username.ToUpperInvariant()}";
         }
     }
 }

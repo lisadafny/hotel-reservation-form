@@ -31,7 +31,7 @@ namespace HotelReservationForm
                 var user = _hotelReservationEntities.Logins.FirstOrDefault(x => x.username == username && x.password == hashedPassword);
                 if(user != null)
                 {
-                    Navigation navigation = new Navigation(this);
+                    Navigation navigation = new Navigation(this, user);
                     navigation.Show();
                     Hide();
                 }

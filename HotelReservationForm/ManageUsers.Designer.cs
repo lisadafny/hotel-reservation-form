@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnEditUser = new System.Windows.Forms.Button();
+            this.btnDisableUser = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.gvUserLogin = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,25 +47,25 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.BtnRefreshClick);
             // 
-            // btnDeleteUser
+            // btnDisableUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(430, 69);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(173, 42);
-            this.btnDeleteUser.TabIndex = 15;
-            this.btnDeleteUser.Text = "DISABLE USER";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.BtnDeleteUserClick);
+            this.btnDisableUser.Location = new System.Drawing.Point(430, 69);
+            this.btnDisableUser.Name = "btnDisableUser";
+            this.btnDisableUser.Size = new System.Drawing.Size(173, 42);
+            this.btnDisableUser.TabIndex = 15;
+            this.btnDisableUser.Text = "DISABLE/ENABLE USER";
+            this.btnDisableUser.UseVisualStyleBackColor = true;
+            this.btnDisableUser.Click += new System.EventHandler(this.BtnDisableUserClick);
             // 
-            // btnEditUser
+            // btnResetPassword
             // 
-            this.btnEditUser.Location = new System.Drawing.Point(251, 69);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(173, 42);
-            this.btnEditUser.TabIndex = 14;
-            this.btnEditUser.Text = "RESET PASSWORD";
-            this.btnEditUser.UseVisualStyleBackColor = true;
-            this.btnEditUser.Click += new System.EventHandler(this.BtnEditUserClick);
+            this.btnResetPassword.Location = new System.Drawing.Point(251, 69);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(173, 42);
+            this.btnResetPassword.TabIndex = 14;
+            this.btnResetPassword.Text = "RESET PASSWORD";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.BtnResetPasswordClick);
             // 
             // btnAddUser
             // 
@@ -101,8 +101,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnDeleteUser);
-            this.Controls.Add(this.btnEditUser);
+            this.Controls.Add(this.btnDisableUser);
+            this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.gvUserLogin);
             this.Controls.Add(this.label1);
@@ -117,8 +117,8 @@
         #endregion
 
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnDeleteUser;
-        private System.Windows.Forms.Button btnEditUser;
+        private System.Windows.Forms.Button btnDisableUser;
+        private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.DataGridView gvUserLogin;
         private System.Windows.Forms.Label label1;
