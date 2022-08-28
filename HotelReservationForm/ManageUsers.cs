@@ -49,7 +49,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Do you really want to reset the password??",
+                    DialogResult result = MessageBox.Show("Reset user password?",
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
@@ -84,7 +84,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Do you really want to reset the password??",
+                    DialogResult result = MessageBox.Show("Disable user?",
             "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
@@ -124,6 +124,11 @@ namespace HotelReservationForm
             }).ToList();
             gvUserLogin.DataSource = users;
             gvUserLogin.Columns["active"].HeaderText = "Is Active?";
+        }
+
+        private void ManageUsersOnLoad(object sender, EventArgs e)
+        {
+            PopulateGrid();
         }
     }
 }

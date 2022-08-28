@@ -108,6 +108,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ManageUsers";
             this.Text = "Manage Users Login";
+            this.Load += new System.EventHandler(this.ManageUsersOnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.gvUserLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
