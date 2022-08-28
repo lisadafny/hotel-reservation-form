@@ -1,41 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
     public partial class Navigation : Form
     {
-        public Navigation()
+        private readonly UserLogin _userLogin;
+        public Login credentials;
+        public string roleName;
+        public Navigation(UserLogin login, Login user)
         {
             InitializeComponent();
+            _userLogin = login;
+            credentials = user;
+            roleName = credentials.UserRoles.FirstOrDefault().Role.name;
         }
 
         private void MakeAReservationClick(object sender, EventArgs e)
         {
-            var OpenForms = Application.OpenForms.Cast<Form>();
-            bool isOpen = OpenForms.Any(x => x.Name == "CustomerReservation");
-            if (!isOpen) { 
-            var customerReservation = new CustomerReservation
+            if (!ValidateStatus.FormIsOpen("CustomerReservation"))
             {
-                MdiParent = this
-            };
-            customerReservation.Show();
+                var customerReservation = new CustomerReservation
+                {
+                    MdiParent = this
+                };
+                customerReservation.Show();
             }
             return;
         }
 
         private void ManageReservationsClick(object sender, EventArgs e)
         {
-            var OpenForms = Application.OpenForms.Cast<Form>();
-            bool isOpen = OpenForms.Any(x => x.Name == "ManageReservations");
-            if (!isOpen)
+            if (!ValidateStatus.FormIsOpen("ManageReservations"))
             {
                 ManageReservations roomListing = new ManageReservations
                 {
@@ -48,15 +45,13 @@ namespace HotelReservationForm
 
         private void ViewArchiveClick(object sender, EventArgs e)
         {
-            var OpenForms = Application.OpenForms.Cast<Form>();
-            bool isOpen = OpenForms.Any(x => x.Name == "ManageRecords");
-            if (!isOpen)
+            if (!ValidateStatus.FormIsOpen("ManageRecords"))
             {
                 ManageRecords viewArchive = new ManageRecords
-            {
-                MdiParent = this
-            };
-            viewArchive.Show();
+                {
+                    MdiParent = this
+                };
+                viewArchive.Show();
             }
             return;
         }
@@ -64,6 +59,37 @@ namespace HotelReservationForm
         private void BugReportClick(object sender, EventArgs e)
         {
             MessageMaker.LazyExcuse();
+        }
+
+        private void NavigationClosing(object sender, FormClosingEventArgs e)
+        {
+            _userLogin.Close();
+        }
+
+        private void ManageUsersClick(object sender, EventArgs e)
+        {
+            if (!ValidateStatus.FormIsOpen("ManageUsers"))
+            {
+                ManageUsers manageUsers = new ManageUsers
+                {
+                    MdiParent = this
+                };
+                manageUsers.Show();
+            }
+            return;
+        }
+
+        private void NavigationOnLoad(object sender, EventArgs e)
+        {
+            if(roleName != "Admin")
+            {
+                adminMenu.Enabled = false;
+            }
+            else
+            {
+                adminMenu.Enabled = true;
+            }
+            tsLoginText.Text = $"Logged in as: {credentials.username.ToUpperInvariant()}";
         }
     }
 }

@@ -67,6 +67,12 @@
     <Compile Include="AddEditRoom.Designer.cs">
       <DependentUpon>AddEditRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerDetail.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
@@ -75,6 +81,10 @@
     </Compile>
     <Compile Include="CustomerReservation.Designer.cs">
       <DependentUpon>CustomerReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cryptography.cs" />
+    <Compile Include="Login.cs">
+      <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ManageRecords.cs">
       <SubType>Form</SubType>
@@ -87,6 +97,12 @@
     </Compile>
     <Compile Include="ManageReservations.Designer.cs">
       <DependentUpon>ManageReservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.Designer.cs">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Navigation.cs">
       <SubType>Form</SubType>
@@ -112,7 +128,19 @@
     <Compile Include="MessageMaker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>HotelReservationDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="TypeOfRoom.cs">
+      <DependentUpon>HotelReservationDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ValidateStatus.cs" />
@@ -122,6 +150,9 @@
     <EmbeddedResource Include="AddEditRoom.resx">
       <DependentUpon>AddEditRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerReservation.resx">
       <DependentUpon>CustomerReservation.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageReservations.resx">
       <DependentUpon>ManageReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsers.resx">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Navigation.resx">
       <DependentUpon>Navigation.cs</DependentUpon>
@@ -144,6 +178,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="HotelReservationDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HotelReservationDB.Designer.cs</LastGenOutput>

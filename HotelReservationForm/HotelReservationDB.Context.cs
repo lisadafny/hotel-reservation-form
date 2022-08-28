@@ -27,5 +27,8 @@ namespace HotelReservationForm
     
         public virtual DbSet<CustomerDetail> CustomerDetails { get; set; }
         public virtual DbSet<TypeOfRoom> TypeOfRooms { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }

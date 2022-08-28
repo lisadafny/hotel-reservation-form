@@ -26,5 +26,12 @@ namespace HotelReservationForm
             }
             return false;
         }
+
+        public static bool FormIsOpen(string name)
+        {
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            bool isOpen = OpenForms.Any(x => x.Name == name);
+            return isOpen;
+        }
     }
 }
