@@ -22,17 +22,23 @@ namespace HotelReservationForm
                 string password = passwordEntryOne.Text;
                 string confirmPassword = passwordEntryTwo.Text;
                 Login userLogin = _hotelReservationEntities.Logins.FirstOrDefault(x => x.id == _credentials.id);
-
-                if (password == confirmPassword)
+                if (password != "password")
                 {
-                    userLogin.password = Cryptography.EncryptPassword(password);
-                    _hotelReservationEntities.SaveChanges();
-                    MessageBox.Show("Password changed!");
-                    Close();
+                    if (password == confirmPassword)
+                    {
+                        userLogin.password = Cryptography.EncryptPassword(password);
+                        _hotelReservationEntities.SaveChanges();
+                        MessageBox.Show("Password changed!");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageMaker.PasswordConfirmationError();
+                    }
                 }
                 else
                 {
-                    MessageMaker.PasswordConfirmationError();
+                    MessageMaker.OldPasswordError();
                 }
             }
             catch (Exception ex)

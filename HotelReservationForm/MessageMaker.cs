@@ -81,6 +81,10 @@ namespace HotelReservationForm
             MessageBox.Show("The password confirmation does not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        public static void OldPasswordError()
+        {
+            MessageBox.Show("New password cannot be the same as old password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
 
         public static void InvalidCredentials()
         {
