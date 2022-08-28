@@ -28,7 +28,7 @@ namespace HotelReservationForm
                 {
                     AddUser addUser = new AddUser(this)
                     {
-                        MdiParent = this
+                        MdiParent = this.MdiParent
                     };
                 }
                 return;

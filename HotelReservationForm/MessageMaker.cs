@@ -80,6 +80,12 @@ namespace HotelReservationForm
             return "SUCCESS";
         }
 
+        public static void PasswordConfirmationError()
+        {
+            MessageBox.Show("The password confirmation does not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+
         public static void InvalidCredentials()
         {
             MessageBox.Show("Invalid credentials");
