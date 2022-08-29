@@ -22,3 +22,4 @@ D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelR
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.UserLogin.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.ManageUsers.resources
 D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.AddUser.resources
+D:\Study\projetos visual 2022\TestingForms\HotelReservationForm\obj\Debug\HotelReservationForm.UserResetPassword.resources

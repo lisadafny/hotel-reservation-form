@@ -81,15 +81,27 @@ namespace HotelReservationForm
 
         private void NavigationOnLoad(object sender, EventArgs e)
         {
-            if(roleName != "Admin")
+            try
             {
-                adminMenu.Enabled = false;
+                if(credentials.password == Cryptography.DefaultPassword())
+                {
+                    var resetPassword = new UserResetPassword(credentials);
+                    resetPassword.ShowDialog();
+                }
+                if (roleName != "Admin")
+                {
+                    adminMenu.Enabled = false;
+                }
+                else
+                {
+                    adminMenu.Enabled = true;
+                }
+                tsLoginText.Text = $"Logged in as: {credentials.username.ToUpperInvariant()}";
             }
-            else
+            catch (Exception ex)
             {
-                adminMenu.Enabled = true;
+                MessageBox.Show(ex.Message);
             }
-            tsLoginText.Text = $"Logged in as: {credentials.username.ToUpperInvariant()}";
         }
     }
 }

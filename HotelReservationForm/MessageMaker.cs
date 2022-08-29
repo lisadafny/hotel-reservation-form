@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelReservationForm
@@ -78,6 +74,16 @@ namespace HotelReservationForm
                 return "WARNING";
             }
             return "SUCCESS";
+        }
+
+        public static void PasswordConfirmationError()
+        {
+            MessageBox.Show("The password confirmation does not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public static void OldPasswordError()
+        {
+            MessageBox.Show("New password cannot be the same as old password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public static void InvalidCredentials()

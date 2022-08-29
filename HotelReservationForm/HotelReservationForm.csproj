@@ -140,6 +140,12 @@
     <Compile Include="UserLogin.Designer.cs">
       <DependentUpon>UserLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserResetPassword.Designer.cs">
+      <DependentUpon>UserResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserRole.cs">
       <DependentUpon>HotelReservationDB.tt</DependentUpon>
     </Compile>
@@ -180,6 +186,9 @@
     </Compile>
     <EmbeddedResource Include="UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserResetPassword.resx">
+      <DependentUpon>UserResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="HotelReservationDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

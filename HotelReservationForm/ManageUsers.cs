@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelReservationForm
@@ -28,8 +23,9 @@ namespace HotelReservationForm
                 {
                     AddUser addUser = new AddUser(this)
                     {
-                        MdiParent = this
+                        MdiParent = this.MdiParent
                     };
+                    addUser.Show();
                 }
                 return;
             }
@@ -49,7 +45,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Do you really want to reset the password??",
+                    DialogResult result = MessageBox.Show("Reset user password?",
                     "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
@@ -84,7 +80,7 @@ namespace HotelReservationForm
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Do you really want to reset the password??",
+                    DialogResult result = MessageBox.Show("Disable user?",
             "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
@@ -124,6 +120,11 @@ namespace HotelReservationForm
             }).ToList();
             gvUserLogin.DataSource = users;
             gvUserLogin.Columns["active"].HeaderText = "Is Active?";
+        }
+
+        private void ManageUsersOnLoad(object sender, EventArgs e)
+        {
+            PopulateGrid();
         }
     }
 }
