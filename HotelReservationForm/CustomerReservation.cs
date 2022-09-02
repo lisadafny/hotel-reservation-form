@@ -24,12 +24,12 @@ namespace HotelReservationForm
 
             try
             {
-                string warningFieldMsg = MessageMaker.EmptyValidation(customerName, room);
-                string warningDateMsg = MessageMaker.DateValidation(dateIn, dateOut);
+                string warningFieldMsg = customerName.EmptyValidation(room);
+                string warningDateMsg = dateIn.DateValidation(dateOut);
                 bool warningBool = ValidateStatus.HasWarning(warningFieldMsg, warningDateMsg);
-                string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningDateMsg);
-                string messageSucess = MessageMaker.SuccessReservationMessage(customerName, room, dateIn, dateOut);
-                string title = MessageMaker.TitleMaker(warningBool);
+                string messageError = warningFieldMsg.WarningMessage(warningDateMsg);
+                string messageSucess = customerName.SuccessReservationMessage(room, dateIn, dateOut);
+                string title = warningBool.TitleMaker();
 
                 if (warningBool)
                 {
@@ -48,7 +48,7 @@ namespace HotelReservationForm
                     _hotelReservationEntities.CustomerDetails.Add(reservationRecord);
                     _hotelReservationEntities.SaveChanges();
 
-                    MessageBox.Show(messageSucess, title);
+                    messageSucess.MessageBoxMaker(title);
                     Close();
                 }
             }

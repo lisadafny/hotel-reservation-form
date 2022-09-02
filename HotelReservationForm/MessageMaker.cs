@@ -3,10 +3,10 @@ using System.Windows.Forms;
 
 namespace HotelReservationForm
 {
-    public class MessageMaker
+    public static class MessageMaker
     {
         
-        public static string EmptyValidation(string fieldOne, string fieldTwo)
+        public static string EmptyValidation(this string fieldOne, string fieldTwo)
         {
             if (string.IsNullOrEmpty(fieldOne) || string.IsNullOrEmpty(fieldTwo))
             {
@@ -15,7 +15,7 @@ namespace HotelReservationForm
             return string.Empty;
         }
 
-        public static string DateValidation(DateTime start, DateTime end)
+        public static string DateValidation(this DateTime start, DateTime end)
         {
             if(start >= end)
             {
@@ -24,7 +24,7 @@ namespace HotelReservationForm
             return string.Empty;
         }
 
-        public static string PriceValidation(string price)
+        public static string PriceValidation(this string price)
         {
             var priceValue = decimal.TryParse(price, out decimal priceDecimal);
             if (priceValue)
@@ -38,20 +38,20 @@ namespace HotelReservationForm
             return "Please put a valid price";
         }
 
-        public static string WarningMessage(string warningTypeOne, string warningTypeTwo = "", string warningTypeThree = "")
+        public static string WarningMessage(this string warningTypeOne, string warningTypeTwo = "", string warningTypeThree = "")
         {
             return $"{warningTypeOne}\n\r" +
                         $"{warningTypeTwo}\n\r" +
                         $"{warningTypeThree}";
         }
-        public static string SuccessReservationMessage(string fieldOne, string fieldTwo, DateTime start, DateTime end)
+        public static string SuccessReservationMessage(this string fieldOne, string fieldTwo, DateTime start, DateTime end)
         {
             return $"Thank you {fieldOne}!\n\r" +
                     $"Your reservation was requested\n\r" +
                     $"You choose the {fieldTwo}\n\r" +
                     $"at {start} until {end}!";
         }
-        public static string SuccessAddEdit(bool edit, string name)
+        public static string SuccessAddEdit(this bool edit, string name)
         {
             if (edit)
             {
@@ -59,7 +59,7 @@ namespace HotelReservationForm
             }
             return $"{name} was created with success!";
         }
-        public static string SuccessAddEdit(bool edit)
+        public static string SuccessAddEdit(this bool edit)
         {
             if (edit)
             {
@@ -67,13 +67,18 @@ namespace HotelReservationForm
             }
             return $"Created with success!";
         }
-        public static string TitleMaker(bool error)
+        public static string TitleMaker(this bool error)
         {
             if (error)
             {
                 return "WARNING";
             }
             return "SUCCESS";
+        }
+
+        public static void MessageBoxMaker(this string bodyMessage, string title)
+        {
+            MessageBox.Show(bodyMessage, title);
         }
 
         public static void PasswordConfirmationError()

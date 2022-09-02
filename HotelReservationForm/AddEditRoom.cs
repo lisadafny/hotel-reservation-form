@@ -40,12 +40,12 @@ namespace HotelReservationForm
         {
             try
             {
-                string warningFieldMsg = MessageMaker.EmptyValidation(tbRoomName.Text, tbPriceRoom.Text);
-                string warningPriceMsg = MessageMaker.PriceValidation(tbPriceRoom.Text);
-                string successMsg = MessageMaker.SuccessAddEdit(_isEditRoom, tbRoomName.Text);
+                string warningFieldMsg = tbRoomName.Text.EmptyValidation(tbPriceRoom.Text);
+                string warningPriceMsg = tbPriceRoom.Text.PriceValidation();
+                string successMsg = _isEditRoom.SuccessAddEdit(tbRoomName.Text);
                 bool warningBool = ValidateStatus.HasWarning(warningFieldMsg, warningPriceMsg);
-                string messageError = MessageMaker.WarningMessage(warningFieldMsg, warningPriceMsg);
-                string title = MessageMaker.TitleMaker(warningBool);
+                string messageError = warningFieldMsg.WarningMessage(warningPriceMsg);
+                string title = warningBool.TitleMaker();
 
                 if (!warningBool)
                 {
@@ -67,7 +67,7 @@ namespace HotelReservationForm
                     }
                     _hotelReservationEntities.SaveChanges();
 
-                    MessageBox.Show(successMsg, title);
+                    successMsg.MessageBoxMaker(title);
                     _roomsData.PopulateGrid();
                     Close();
                 }
